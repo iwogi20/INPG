@@ -1,0 +1,44 @@
+	
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+struct complex{
+    float Re;
+    float Im;
+};
+//typedef struct complex complex;
+
+struct complex dodawanie(struct complex licz1, struct complex licz2){
+    struct complex wynik;
+    wynik.Re=licz1.Re+licz2.Re;
+    wynik.Im=licz1.Im+licz2.Im;
+    return wynik;
+
+};
+float modul(struct complex licz1){
+
+    return sqrt((licz1.Re)*(licz1.Re)+(licz1.Im)*(licz1.Im));
+
+};
+struct complex sprzezenie(struct complex licz1){
+    struct complex zesp;
+    zesp.Re=licz1.Re;
+    zesp.Im=-licz1.Im;
+    return zesp;
+
+};
+
+void wypisz_zesp(struct complex licz1) {
+    printf("%.2f %+.2fi \n", licz1.Re, licz1.Im);
+}
+int main()
+{
+    struct complex x={5,1},y={3,7};
+    wypisz_zesp(x);wypisz_zesp(y);
+    printf("Wynik dodawania to");wypisz_zesp(dodawanie(x,y));
+    printf("Modul liczby x to %lf\n",modul(x));
+    printf("sprzezenie liczby x to");wypisz_zesp(sprzezenie(x));
+
+    return 0;
+}
